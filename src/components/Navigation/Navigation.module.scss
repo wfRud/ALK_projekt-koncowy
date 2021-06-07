@@ -36,6 +36,11 @@
       border: 1px solid $meme_black;
       transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
+      &.active {
+        background-color: $meme_blue;
+        color: $meme_white;
+      }
+
       &:first-child {
         margin: 80px 0 16px 0;
       }

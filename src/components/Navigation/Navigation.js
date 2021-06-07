@@ -9,10 +9,18 @@ const Navigation = () => (
     </span>
 
     <ul className={styles.nav_items}>
-      <NavLink to="/regular" className={styles.nav_item}>
+      <NavLink
+        to="/regular"
+        className={styles.nav_item}
+        activeClassName={styles.active}
+      >
         Regular
       </NavLink>
-      <NavLink to="/hot" className={styles.nav_item}>
+      <NavLink
+        to="/hot"
+        className={styles.nav_item}
+        activeClassName={styles.active}
+      >
         Hot
       </NavLink>
     </ul>
