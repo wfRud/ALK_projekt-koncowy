@@ -4,10 +4,16 @@
 $meme_font-family: "Montserrat", sans-serif;
 
 // Font-Size
-$meme_size-xs: 16px;
+$meme_size-xs: 12px;
+$meme_size-s: 16px;
 $meme_size-M: 24px;
 $meme_size-L: 32px;
 $meme_size-XL: 40px;
+
+//Font-Weight
+$meme_font-weight_lite: 300;
+$meme_font-weight_regular: 400;
+$meme_font-weight_bold: 700;
 
 // Colors
 $meme_white: #fff;

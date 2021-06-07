@@ -1,0 +1,59 @@
+@import "../../assets/style/varriable";
+
+.container {
+  max-width: 580px;
+  height: 780px;
+  border: 1px solid $meme_black;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.15);
+
+  .title {
+    flex: 1 0 0;
+    font-size: $meme_size-L;
+  }
+
+  .imageCnt {
+    flex: 2 1 auto;
+    margin: 20px 0;
+    max-height: 600px;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  .Icons_cnt {
+    flex: 1 0 0;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+
+    .Icon_box {
+      display: flex;
+      align-items: center;
+
+      .Icon {
+        margin-right: 5px;
+
+        &__downVote {
+          fill: $meme_red;
+        }
+        &__upVote {
+          fill: $meme_green;
+        }
+      }
+
+      .counter {
+        font-size: $meme_size-xs;
+        font-weight: $meme_font-weight_bold;
+      }
+    }
+  }
+}
