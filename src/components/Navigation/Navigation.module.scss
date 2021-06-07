@@ -1,0 +1,57 @@
+@import "../../assets/style/varriable";
+
+.navigation {
+  width: 15vw;
+  height: 100vh;
+  border-right: 1px solid $meme_black;
+
+  .logo_cnt {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      font-size: $meme_size-XL;
+      font-weight: $meme_font-weight_bold;
+      cursor: default;
+    }
+  }
+
+  .nav_items {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .nav_item {
+      font-size: $meme_size-M;
+      text-align: center;
+      line-height: 56px;
+      width: 200px;
+      height: 56px;
+      border: 1px solid $meme_black;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      &:first-child {
+        margin: 80px 0 16px 0;
+      }
+
+      &:nth-child(2) {
+        &:after {
+          content: "\1F525";
+          margin-left: 16px;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $meme_blue;
+        color: $meme_white;
+      }
+    }
+  }
+}
