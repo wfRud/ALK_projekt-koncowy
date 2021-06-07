@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Navigation.module.scss";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => (
   <nav className={styles.navigation}>
@@ -8,8 +9,12 @@ const Navigation = () => (
     </span>
 
     <ul className={styles.nav_items}>
-      <li className={styles.nav_item}>Regular</li>
-      <li className={styles.nav_item}>Hot</li>
+      <NavLink to="/regular" className={styles.nav_item}>
+        Regular
+      </NavLink>
+      <NavLink to="/hot" className={styles.nav_item}>
+        Hot
+      </NavLink>
     </ul>
   </nav>
 );
