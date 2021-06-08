@@ -4,6 +4,9 @@
   width: 15vw;
   height: 100vh;
   border-right: 1px solid $meme_black;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   .logo_cnt {
     width: 100%;

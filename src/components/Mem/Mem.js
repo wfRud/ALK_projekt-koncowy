@@ -1,5 +1,4 @@
 import React from "react";
-import mem1 from "../../assets/images/mem1.jpg";
 import { ReactComponent as DownVoteIcon } from "../../assets/iCons/DownvoteIcon.svg";
 import { ReactComponent as UpVoteIcon } from "../../assets/iCons/UpvoteIcon.svg";
 import styles from "./Mem.module.scss";
