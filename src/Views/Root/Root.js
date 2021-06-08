@@ -1,9 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import styles from "./Root.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Root() {
   return (
