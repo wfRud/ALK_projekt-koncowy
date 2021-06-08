@@ -1,10 +1,12 @@
 @import "../../assets/style/varriable";
 
 .container {
-  max-width: 580px;
+  min-width: 500px;
+  width: 580px;
   height: 780px;
-  border: 1px solid $meme_black;
+  margin: 0 auto 40px auto;
   padding: 20px 15px;
+  border: 1px solid $meme_black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

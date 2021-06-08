@@ -1,4 +1,15 @@
 .container {
   width: 85vw;
   height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+
+  .heading {
+    margin: 20px 0 20px 15px;
+  }
+
+  .memesContainer {
+  }
 }
