@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
-import action from "../../store/regular/actions";
+import * as regularActions from "../../store/regular/actions";
+import * as hotActions from "../../store/hot/actions";
 
 function Root() {
   const list = useSelector((state) => state.regular.list);
@@ -14,11 +15,16 @@ function Root() {
     const currentId = Number(e.nativeEvent.path[3].id);
     const name = e.currentTarget.dataset.name;
 
-    dispatch(action.upvote(currentId, name));
+    dispatch(regularActions.upvote(currentId, name));
   };
 
   const filterMemesArray = (arr) => {
-    arr.filter((mem) => mem.upvote - mem.downvote > 5);
+    dispatch(hotActions.clear());
+    arr.filter((mem) => {
+      if (mem.upvote - mem.downvote > 5) {
+        dispatch(hotActions.insert(mem, mem.id));
+      }
+    });
   };
 
   useEffect(() => {

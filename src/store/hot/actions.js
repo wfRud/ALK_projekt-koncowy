@@ -1,10 +1,11 @@
 import types from "./types";
 
-const insert = (item) => ({
+export const insert = (item, currentId) => ({
   type: types.INSERT,
   item,
+  currentId,
 });
 
-export default {
-  insert,
-};
+export const clear = () => ({
+  type: types.CLEAR,
+});

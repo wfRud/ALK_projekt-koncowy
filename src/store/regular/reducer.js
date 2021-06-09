@@ -7,14 +7,14 @@ const initialMemes = {
     {
       id: 0,
       title: "mem1",
-      upvote: 3,
+      upvote: 9,
       downvote: 4,
       img: ImageData[0],
     },
     {
       id: 1,
       title: "mem2",
-      upvote: 2,
+      upvote: 12,
       downvote: 7,
       img: ImageData[1],
     },
