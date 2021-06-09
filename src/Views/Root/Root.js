@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
-import action from "../../store/actions/actions";
+import action from "../../store/regular/actions";
 
 function Root() {
-  const list = useSelector((state) => state.list);
+  const list = useSelector((state) => state.regular.list);
   const dispatch = useDispatch();
 
   const handleVote = (e) => {
@@ -29,7 +29,7 @@ function Root() {
     <div className={styles.App}>
       <Router>
         <Navigation />
-        {console.log("render")}
+
         <Route exact path="/" component={() => <p>Add Form</p>} />
         <Route
           path="/regular"

@@ -1,4 +1,4 @@
-import types from "../actions/types";
+import types from "./types";
 import ImageData from "../../assets/images";
 
 const initialMemes = {
@@ -28,7 +28,7 @@ const initialMemes = {
   ],
 };
 
-const memReducer = (state = initialMemes, action) => {
+const regularReducer = (state = initialMemes, action) => {
   switch (action.type) {
     case types.VOTE:
       return {
@@ -61,4 +61,4 @@ const memReducer = (state = initialMemes, action) => {
   }
 };
 
-export default memReducer;
+export default regularReducer;
