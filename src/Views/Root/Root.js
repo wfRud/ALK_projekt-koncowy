@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
@@ -15,23 +15,21 @@ function Root() {
     const name = e.currentTarget.dataset.name;
 
     dispatch(action.upvote(currentId, name));
-    // switch (name) {
-    //   case "upvote":
-
-    //     break;
-    //   case "downvote":
-    //     dispatch(action.upvote());
-
-    //     break;
-    //   default:
-    //     return;
-    // }
   };
+
+  const filterMemesArray = (arr) => {
+    arr.filter((mem) => mem.upvote - mem.downvote > 5);
+  };
+
+  useEffect(() => {
+    filterMemesArray(list);
+  }, [list]);
 
   return (
     <div className={styles.App}>
       <Router>
         <Navigation />
+        {console.log("render")}
         <Route exact path="/" component={() => <p>Add Form</p>} />
         <Route
           path="/regular"

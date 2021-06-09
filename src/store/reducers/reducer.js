@@ -34,14 +34,14 @@ const memReducer = (state = initialMemes, action) => {
       return {
         ...state,
         list: [
-          // map array to find current element, return each one which doesn't fit by id
+          // map array to find current element, return each one which doesn't fit by id.
 
           ...state.list.map((item) => {
             if (item.id !== action.currentId) {
               return item;
             }
 
-            // recognize action name is it "upvote" || "downvote" and increment "upvote"||"downvote" target object property
+            // recognize action name is it "upvote" || "downvote" and increment "upvote"||"downvote" target object property.
 
             return action.name === "upvote"
               ? {

@@ -6,7 +6,6 @@ const MemesView = ({ list, pathName, handleVote }) => (
   <div className={styles.container}>
     <h2 className={styles.heading}>You're on {pathName}</h2>
     <div className={styles.memesContainer}>
-      {/* {console.log(list)} */}
       {list ? (
         list.map((listItem) => {
           const { id, title, upvote, downvote, img } = listItem;
