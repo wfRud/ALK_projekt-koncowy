@@ -1,7 +1,5 @@
-const UPVOTE = "UPVOTE";
-const DOWNVOTE = "DOWNVOTE";
+const VOTE = "VOTE";
 
 export default {
-  UPVOTE,
-  DOWNVOTE,
+  VOTE,
 };

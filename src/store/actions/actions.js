@@ -1,14 +1,11 @@
 import types from "./types";
 
-const upvote = () => ({
-  type: types.upvote,
-});
-
-const downvote = () => ({
-  type: types.downvote,
+const upvote = (currentId, name) => ({
+  type: types.VOTE,
+  currentId,
+  name,
 });
 
 export default {
   upvote,
-  downvote,
 };

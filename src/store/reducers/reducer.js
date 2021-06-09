@@ -30,26 +30,32 @@ const initialMemes = {
 
 const memReducer = (state = initialMemes, action) => {
   switch (action.type) {
-    case types.UPVOTE:
+    case types.VOTE:
       return {
         ...state,
         list: [
-          ...state,
-          state.list.forEach((mem) => {
-            mem.id = action.item ? mem.upvote + 1 : null;
+          // map array to find current element, return each one which doesn't fit by id
+
+          ...state.list.map((item) => {
+            if (item.id !== action.currentId) {
+              return item;
+            }
+
+            // recognize action name is it "upvote" || "downvote" and increment "upvote"||"downvote" target object property
+
+            return action.name === "upvote"
+              ? {
+                  ...item,
+                  ...(item.upvote = item.upvote + 1),
+                }
+              : {
+                  ...item,
+                  ...(item.downvote = item.downvote + 1),
+                };
           }),
         ],
       };
-    case types.DOWNVOTE:
-      return {
-        ...state,
-        list: [
-          ...state,
-          state.list.forEach((mem) => {
-            mem.id = action.item ? mem.downvote + 1 : null;
-          }),
-        ],
-      };
+
     default:
       return state;
   }
