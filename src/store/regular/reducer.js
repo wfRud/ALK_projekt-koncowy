@@ -55,6 +55,11 @@ const regularReducer = (state = initialMemes, action) => {
           }),
         ],
       };
+    case types.REMOVE:
+      return {
+        ...state,
+        list: [...state.list.filter((item) => item !== action.currentId)],
+      };
 
     default:
       return state;

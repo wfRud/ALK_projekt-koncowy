@@ -1,9 +1,13 @@
 import types from "./types";
 
-export const insert = (item, currentId) => ({
+export const insert = (item) => ({
   type: types.INSERT,
   item,
-  currentId,
+});
+
+export const remove = (item) => ({
+  type: types.REMOVE,
+  item,
 });
 
 export const clear = () => ({

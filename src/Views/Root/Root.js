@@ -9,6 +9,8 @@ import * as hotActions from "../../store/hot/actions";
 
 function Root() {
   const list = useSelector((state) => state.regular.list);
+  const hotList = useSelector((state) => state.hot.list);
+
   const dispatch = useDispatch();
 
   const handleVote = (e) => {
@@ -18,17 +20,20 @@ function Root() {
     dispatch(regularActions.upvote(currentId, name));
   };
 
-  const filterMemesArray = (arr) => {
-    dispatch(hotActions.clear());
-    arr.filter((mem) => {
-      if (mem.upvote - mem.downvote > 5) {
-        dispatch(hotActions.insert(mem, mem.id));
-      }
-    });
+  const filterMemesArray = (arr) =>
+    arr.filter((mem) => mem.upvote - mem.downvote > 5);
+
+  const setHotArrayState = (arr) => {
+    if (arr.length > 0) {
+      dispatch(hotActions.clear());
+      arr.forEach((mem) => {
+        dispatch(hotActions.insert(mem));
+      });
+    }
   };
 
   useEffect(() => {
-    filterMemesArray(list);
+    setHotArrayState(filterMemesArray(list));
   }, [list]);
 
   return (
@@ -49,7 +54,7 @@ function Root() {
         />
         <Route
           path="/hot"
-          component={() => <MemesView pathName={"Hot View"} />}
+          component={() => <MemesView pathName={"Hot View"} list={hotList} />}
         />
       </Router>
     </div>

@@ -5,3 +5,8 @@ export const upvote = (currentId, name) => ({
   currentId,
   name,
 });
+
+export const remove = (currentId) => ({
+  type: types.REMOVE,
+  currentId,
+});
