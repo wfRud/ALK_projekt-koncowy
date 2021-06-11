@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
-import * as regularActions from "../../store/regular/actions";
-import * as hotActions from "../../store/hot/actions";
+
+import * as listActions from "../../store/list/actions";
 
 function Root() {
-  const list = useSelector((state) => state.regular.list);
-  const hotList = useSelector((state) => state.hot.list);
+  const list = useSelector((state) => state.mainList);
+  const regularList = useSelector((state) => state.regularList);
+  const hotList = useSelector((state) => state.hotList);
 
   const dispatch = useDispatch();
 
@@ -17,44 +18,49 @@ function Root() {
     const currentId = Number(e.nativeEvent.path[3].id);
     const name = e.currentTarget.dataset.name;
 
-    dispatch(regularActions.upvote(currentId, name));
+    dispatch(listActions.upvote(currentId, name));
   };
 
-  const filterMemesArray = (arr) =>
-    arr.filter((mem) => mem.upvote - mem.downvote > 5);
+  const setArrays = (arr) => {
+    let flag = false;
+    dispatch(listActions.clear("regularList"));
+    dispatch(listActions.clear("hotList"));
 
-  const setHotArrayState = (arr) => {
-    if (arr.length > 0) {
-      dispatch(hotActions.clear());
-      arr.forEach((mem) => {
-        dispatch(hotActions.insert(mem));
-      });
-    }
+    arr.forEach((meme) => {
+      meme.upvote - meme.downvote > 5 ? (flag = true) : (flag = false);
+      dispatch(listActions.insert(flag, meme));
+    });
   };
 
   useEffect(() => {
-    setHotArrayState(filterMemesArray(list));
+    setArrays(list);
   }, [list]);
 
   return (
     <div className={styles.App}>
       <Router>
         <Navigation />
-
+        {console.log("rerender")}
         <Route exact path="/" component={() => <p>Add Form</p>} />
         <Route
           path="/regular"
           component={() => (
             <MemesView
               pathName={"Regular View"}
-              list={list}
+              list={regularList}
               handleVote={handleVote}
             />
           )}
         />
         <Route
           path="/hot"
-          component={() => <MemesView pathName={"Hot View"} list={hotList} />}
+          component={() => (
+            <MemesView
+              pathName={"Hot View"}
+              list={hotList}
+              handleVote={handleVote}
+            />
+          )}
         />
       </Router>
     </div>

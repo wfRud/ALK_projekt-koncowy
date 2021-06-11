@@ -6,6 +6,17 @@ export const upvote = (currentId, name) => ({
   name,
 });
 
+export const insert = (flag, item) => ({
+  type: types.INSERT,
+  flag,
+  item,
+});
+
+export const clear = (field) => ({
+  type: types.CLEAR,
+  field,
+});
+
 export const remove = (currentId) => ({
   type: types.REMOVE,
   currentId,

@@ -2,8 +2,8 @@ import types from "./types";
 import ImageData from "../../assets/images";
 
 const initialMemes = {
-  listName: "Regular",
-  list: [
+  listName: "Memes lists",
+  mainList: [
     {
       id: 0,
       title: "mem1",
@@ -26,17 +26,19 @@ const initialMemes = {
       img: ImageData[2],
     },
   ],
+  hotList: [],
+  regularList: [],
 };
 
-const regularReducer = (state = initialMemes, action) => {
+const listReducer = (state = initialMemes, action) => {
   switch (action.type) {
     case types.VOTE:
       return {
         ...state,
-        list: [
+        mainList: [
           // map array to find current element, return each one which doesn't fit by id.
 
-          ...state.list.map((item) => {
+          ...state.mainList.map((item) => {
             if (item.id !== action.currentId) {
               return item;
             }
@@ -55,15 +57,29 @@ const regularReducer = (state = initialMemes, action) => {
           }),
         ],
       };
+    case types.INSERT:
+      return action.flag
+        ? {
+            ...state,
+            hotList: [...state.hotList, action.item],
+          }
+        : {
+            ...state,
+            regularList: [...state.regularList, action.item],
+          };
     case types.REMOVE:
       return {
         ...state,
-        list: [...state.list.filter((item) => item !== action.currentId)],
+        list: [...state.list.filter((item) => item.id !== action.currentId)],
       };
-
+    case types.CLEAR:
+      return {
+        ...state,
+        [action.field]: [],
+      };
     default:
       return state;
   }
 };
 
-export default regularReducer;
+export default listReducer;

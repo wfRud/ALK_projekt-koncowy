@@ -5,8 +5,9 @@ import Mem from "../../components/Mem/Mem";
 const MemesView = ({ list, pathName, handleVote }) => (
   <div className={styles.container}>
     <h2 className={styles.heading}>You're on {pathName}</h2>
+
     <div className={styles.memesContainer}>
-      {list ? (
+      {list.length > 0 ? (
         list.map((listItem) => {
           const { id, title, upvote, downvote, img } = listItem;
 
