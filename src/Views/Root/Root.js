@@ -40,7 +40,7 @@ function Root() {
     <div className={styles.App}>
       <Router>
         <Navigation />
-        {console.log("rerender")}
+
         <Route exact path="/" component={() => <p>Add Form</p>} />
         <Route
           path="/regular"
