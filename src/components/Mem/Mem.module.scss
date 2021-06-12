@@ -14,9 +14,16 @@
   border-radius: 5px;
   box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.15);
 
-  .title {
-    flex: 1 0 0;
-    font-size: $meme_size-L;
+  .Top_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .title {
+      flex: 1 0 0;
+      font-size: $meme_size-L;
+    }
   }
 
   .imageCnt {
@@ -36,35 +43,52 @@
     width: 20%;
     display: flex;
     justify-content: space-between;
+  }
+}
 
-    .Icon_box {
-      display: flex;
-      align-items: center;
+.Icon_box {
+  display: flex;
+  align-items: center;
 
-      .Icon {
-        margin-right: 5px;
-        transition: transform 0.3s ease-in-out;
+  .Icon {
+    margin-right: 5px;
+    transition: transform 0.3s ease-in-out;
 
-        &__downVote {
-          fill: $meme_red;
-        }
-        &__upVote {
-          fill: $meme_green;
-        }
-        &:hover {
-          cursor: pointer;
-          transform: scale(1.1);
-        }
-
-        path {
-          pointer-events: none;
-        }
+    &__downVote {
+      fill: $meme_red;
+    }
+    &__upVote {
+      fill: $meme_green;
+    }
+    &__favorite {
+      path {
+        fill: transparent;
+        stroke-width: 2;
+        stroke: $meme_orange;
+        transition: fill 0.3s ease-in-out;
+      }
+      &_active {
+        fill: $meme_orange;
       }
 
-      .counter {
-        font-size: $meme_size-xs;
-        font-weight: $meme_font-weight_bold;
+      &:hover {
+        path {
+          fill: $meme_orange;
+        }
       }
     }
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    path {
+      pointer-events: none;
+    }
+  }
+  .counter {
+    font-size: $meme_size-xs;
+    font-weight: $meme_font-weight_bold;
   }
 }

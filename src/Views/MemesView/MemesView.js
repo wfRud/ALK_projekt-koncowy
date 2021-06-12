@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./MemesView.module.scss";
 import Mem from "../../components/Mem/Mem";
 
-const MemesView = ({ list, pathName, handleVote }) => (
+const MemesView = ({ list, pathName, handleVote, handleSetFave }) => (
   <div className={styles.container}>
     <h2 className={styles.heading}>You're on {pathName}</h2>
 
     <div className={styles.memesContainer}>
       {list.length > 0 ? (
         list.map((listItem) => {
-          const { id, title, upvote, downvote, img } = listItem;
+          const { id, title, upvote, downvote, favorite, img } = listItem;
 
           return (
             <Mem
@@ -18,8 +18,10 @@ const MemesView = ({ list, pathName, handleVote }) => (
               title={title}
               upvote={upvote}
               downvote={downvote}
+              favorite={favorite}
               img={img}
               handleVote={handleVote}
+              handleSetFave={handleSetFave}
             />
           );
         })
