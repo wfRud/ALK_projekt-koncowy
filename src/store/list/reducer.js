@@ -9,6 +9,7 @@ const initialMemes = {
       title: "mem1",
       upvote: 9,
       downvote: 4,
+      favorite: false,
       img: ImageData[0],
     },
     {
@@ -16,6 +17,7 @@ const initialMemes = {
       title: "mem2",
       upvote: 12,
       downvote: 7,
+      favorite: false,
       img: ImageData[1],
     },
     {
@@ -23,6 +25,7 @@ const initialMemes = {
       title: "mem3",
       upvote: 3,
       downvote: 8,
+      favorite: false,
       img: ImageData[2],
     },
   ],
@@ -67,6 +70,23 @@ const listReducer = (state = initialMemes, action) => {
             ...state,
             regularList: [...state.regularList, action.item],
           };
+
+    case types.SETFAVE:
+      return {
+        ...state,
+        mainList: [
+          ...state.mainList.map((item) => {
+            if (item.id !== action.currentId) {
+              return item;
+            }
+
+            return {
+              ...item,
+              ...(item.favorite = !item.favorite),
+            };
+          }),
+        ],
+      };
     case types.REMOVE:
       return {
         ...state,

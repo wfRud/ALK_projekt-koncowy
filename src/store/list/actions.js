@@ -12,6 +12,11 @@ export const insert = (flag, item) => ({
   item,
 });
 
+export const setFave = (currentId) => ({
+  type: types.SETFAVE,
+  currentId,
+});
+
 export const clear = (field) => ({
   type: types.CLEAR,
   field,
