@@ -1,11 +1,31 @@
 import React from "react";
 import { ReactComponent as DownVoteIcon } from "../../assets/iCons/DownvoteIcon.svg";
 import { ReactComponent as UpVoteIcon } from "../../assets/iCons/UpvoteIcon.svg";
+import { ReactComponent as StarIcon } from "../../assets/iCons/Staricon.svg";
 import styles from "./Mem.module.scss";
 
-const Mem = ({ id, title, upvote, downvote, img, handleVote }) => (
+const Mem = ({
+  id,
+  title,
+  upvote,
+  downvote,
+  favorite,
+  img,
+  handleVote,
+  handleSetFave,
+}) => (
   <div className={styles.container} id={id}>
-    <h2 className={styles.title}>{title}</h2>
+    <div className={styles.Top_bar}>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.Icon_box}>
+        <StarIcon
+          className={`${styles.Icon} ${
+            favorite ? styles.Icon__favorite_active : styles.Icon__favorite
+          }`}
+          onClick={(e) => handleSetFave(e)}
+        />
+      </div>
+    </div>
     <div className={styles.imageCnt}>
       <img src={img} alt="meme pic" className={styles.image} />
     </div>

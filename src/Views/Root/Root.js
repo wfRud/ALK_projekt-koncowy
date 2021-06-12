@@ -21,6 +21,11 @@ function Root() {
     dispatch(listActions.upvote(currentId, name));
   };
 
+  const handleSetFave = (e) => {
+    const currentId = Number(e.nativeEvent.path[3].id);
+    dispatch(listActions.setFave(currentId));
+  };
+
   const setArrays = (arr) => {
     let flag = false;
     dispatch(listActions.clear("regularList"));
@@ -49,6 +54,7 @@ function Root() {
               pathName={"Regular View"}
               list={regularList}
               handleVote={handleVote}
+              handleSetFave={handleSetFave}
             />
           )}
         />
@@ -59,6 +65,18 @@ function Root() {
               pathName={"Hot View"}
               list={hotList}
               handleVote={handleVote}
+              handleSetFave={handleSetFave}
+            />
+          )}
+        />
+        <Route
+          path="/favorite"
+          component={() => (
+            <MemesView
+              pathName={"Favorite View"}
+              list={hotList}
+              handleVote={handleVote}
+              handleSetFave={handleSetFave}
             />
           )}
         />

@@ -69,6 +69,8 @@
       }
       &_active {
         fill: $meme_orange;
+        stroke-width: 2;
+        stroke: $meme_orange;
       }
 
       &:hover {
