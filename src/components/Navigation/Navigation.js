@@ -23,6 +23,13 @@ const Navigation = () => (
       >
         Hot
       </NavLink>
+      <NavLink
+        to="/favorite"
+        className={styles.nav_item}
+        activeClassName={styles.active}
+      >
+        Favorite
+      </NavLink>
     </ul>
   </nav>
 );

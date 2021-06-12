@@ -38,6 +38,7 @@
       height: 56px;
       border: 1px solid $meme_black;
       transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      margin-bottom: 16px;
 
       &.active {
         background-color: $meme_blue;
@@ -45,7 +46,7 @@
       }
 
       &:first-child {
-        margin: 80px 0 16px 0;
+        margin-top: 80px;
       }
 
       &:nth-child(2) {
