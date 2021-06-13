@@ -8,6 +8,7 @@ import MemesView from "../MemesView/MemesView";
 import * as listActions from "../../store/list/actions";
 
 function Root() {
+  const state = useSelector((state) => state);
   const list = useSelector((state) => state.mainList);
   const regularList = useSelector((state) => state.regularList);
   const hotList = useSelector((state) => state.hotList);
@@ -27,11 +28,25 @@ function Root() {
     dispatch(listActions.setFave(currentId));
   };
 
+  const clearSpecificArray = () => {
+    for (const key in state) {
+      if (
+        Array.isArray(state[key]) &&
+        key !== "mainList" &&
+        state[key].length > 0
+      ) {
+        console.log(`${key} : ${state[key]}`);
+        dispatch(listActions.clear(key));
+      }
+    }
+  };
+
   const setArrays = (arr) => {
     let isHot = false;
-    dispatch(listActions.clear("regularList"));
-    dispatch(listActions.clear("hotList"));
-    dispatch(listActions.clear("favoriteList"));
+    clearSpecificArray();
+    // dispatch(listActions.clear("regularList"));
+    // dispatch(listActions.clear("hotList"));
+    // dispatch(listActions.clear("favoriteList"));
 
     arr.forEach((meme) => {
       meme.upvote - meme.downvote > 5 ? (isHot = true) : (isHot = false);
