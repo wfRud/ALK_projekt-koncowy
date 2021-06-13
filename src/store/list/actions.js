@@ -16,9 +16,8 @@ export const insert = (isHot, item) => ({
   item,
 });
 
-export const insertFave = (isFave, item) => ({
+export const insertFave = (item) => ({
   type: types.INSERT_FAVE,
-  isFave,
   item,
 });
 

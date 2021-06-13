@@ -44,14 +44,11 @@ function Root() {
   const setArrays = (arr) => {
     let isHot = false;
     clearSpecificArray();
-    // dispatch(listActions.clear("regularList"));
-    // dispatch(listActions.clear("hotList"));
-    // dispatch(listActions.clear("favoriteList"));
 
     arr.forEach((meme) => {
       meme.upvote - meme.downvote > 5 ? (isHot = true) : (isHot = false);
       dispatch(listActions.insert(isHot, meme));
-      dispatch(listActions.insertFave(meme.favorite, meme));
+      return meme.favorite ? dispatch(listActions.insertFave(meme)) : null;
     });
   };
 
