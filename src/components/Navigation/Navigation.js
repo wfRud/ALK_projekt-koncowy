@@ -30,6 +30,13 @@ const Navigation = () => (
       >
         Favorite
       </NavLink>
+      <NavLink
+        to="/add"
+        className={styles.nav_item}
+        activeClassName={styles.active}
+      >
+        Add
+      </NavLink>
     </ul>
   </nav>
 );

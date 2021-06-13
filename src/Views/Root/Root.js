@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
+import FormView from "../FormView/FormView";
 
 import * as listActions from "../../store/list/actions";
 
@@ -94,6 +95,7 @@ function Root() {
             />
           )}
         />
+        <Route path="/add" component={() => <FormView />} />
       </Router>
     </div>
   );
