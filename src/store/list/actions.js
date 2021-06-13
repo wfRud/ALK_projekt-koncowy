@@ -6,7 +6,7 @@ export const upvote = (currentId, name) => ({
   name,
 });
 export const setFave = (currentId) => ({
-  type: types.SETFAVE,
+  type: types.SET_FAVE,
   currentId,
 });
 

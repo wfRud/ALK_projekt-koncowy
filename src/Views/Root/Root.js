@@ -35,7 +35,6 @@ function Root() {
         key !== "mainList" &&
         state[key].length > 0
       ) {
-        console.log(`${key} : ${state[key]}`);
         dispatch(listActions.clear(key));
       }
     }

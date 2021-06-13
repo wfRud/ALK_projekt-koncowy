@@ -1,5 +1,5 @@
 const VOTE = "VOTE";
-const SETFAVE = "SETFAVE";
+const SET_FAVE = "SET_FAVE";
 const INSERT = "INSERT";
 const INSERT_FAVE = "INSERT_FAVE";
 const REMOVE = "REMOVE";
@@ -8,7 +8,7 @@ const CLEAR = "CLEAR";
 export default {
   VOTE,
   INSERT,
-  SETFAVE,
+  SET_FAVE,
   REMOVE,
   CLEAR,
   INSERT_FAVE,

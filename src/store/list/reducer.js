@@ -61,7 +61,7 @@ const listReducer = (state = initialMemes, action) => {
           }),
         ],
       };
-    case types.SETFAVE:
+    case types.SET_FAVE:
       return {
         ...state,
         mainList: [
