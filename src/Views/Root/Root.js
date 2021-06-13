@@ -11,6 +11,7 @@ function Root() {
   const list = useSelector((state) => state.mainList);
   const regularList = useSelector((state) => state.regularList);
   const hotList = useSelector((state) => state.hotList);
+  const favoriteList = useSelector((state) => state.favoriteList);
 
   const dispatch = useDispatch();
 
@@ -27,13 +28,15 @@ function Root() {
   };
 
   const setArrays = (arr) => {
-    let flag = false;
+    let isHot = false;
     dispatch(listActions.clear("regularList"));
     dispatch(listActions.clear("hotList"));
+    dispatch(listActions.clear("favoriteList"));
 
     arr.forEach((meme) => {
-      meme.upvote - meme.downvote > 5 ? (flag = true) : (flag = false);
-      dispatch(listActions.insert(flag, meme));
+      meme.upvote - meme.downvote > 5 ? (isHot = true) : (isHot = false);
+      dispatch(listActions.insert(isHot, meme));
+      dispatch(listActions.insertFave(meme.favorite, meme));
     });
   };
 
@@ -74,7 +77,7 @@ function Root() {
           component={() => (
             <MemesView
               pathName={"Favorite View"}
-              list={hotList}
+              list={favoriteList}
               handleVote={handleVote}
               handleSetFave={handleSetFave}
             />

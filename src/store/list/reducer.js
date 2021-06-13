@@ -29,8 +29,9 @@ const initialMemes = {
       img: ImageData[2],
     },
   ],
-  hotList: [],
   regularList: [],
+  hotList: [],
+  favoriteList: [],
 };
 
 const listReducer = (state = initialMemes, action) => {
@@ -60,17 +61,6 @@ const listReducer = (state = initialMemes, action) => {
           }),
         ],
       };
-    case types.INSERT:
-      return action.flag
-        ? {
-            ...state,
-            hotList: [...state.hotList, action.item],
-          }
-        : {
-            ...state,
-            regularList: [...state.regularList, action.item],
-          };
-
     case types.SETFAVE:
       return {
         ...state,
@@ -87,6 +77,26 @@ const listReducer = (state = initialMemes, action) => {
           }),
         ],
       };
+    case types.INSERT:
+      return action.isHot
+        ? {
+            ...state,
+            hotList: [...state.hotList, action.item],
+          }
+        : {
+            ...state,
+            regularList: [...state.regularList, action.item],
+          };
+    case types.INSERT_FAVE:
+      return action.isFave
+        ? {
+            ...state,
+            favoriteList: [...state.favoriteList, action.item],
+          }
+        : {
+            ...state,
+            favoriteList: [...state.favoriteList],
+          };
     case types.REMOVE:
       return {
         ...state,

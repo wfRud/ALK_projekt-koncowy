@@ -5,16 +5,21 @@ export const upvote = (currentId, name) => ({
   currentId,
   name,
 });
-
-export const insert = (flag, item) => ({
-  type: types.INSERT,
-  flag,
-  item,
-});
-
 export const setFave = (currentId) => ({
   type: types.SETFAVE,
   currentId,
+});
+
+export const insert = (isHot, item) => ({
+  type: types.INSERT,
+  isHot,
+  item,
+});
+
+export const insertFave = (isFave, item) => ({
+  type: types.INSERT_FAVE,
+  isFave,
+  item,
 });
 
 export const clear = (field) => ({
