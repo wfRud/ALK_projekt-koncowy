@@ -88,11 +88,15 @@ const listReducer = (state = initialMemes, action) => {
             regularList: [...state.regularList, action.item],
           };
     case types.INSERT_FAVE:
-      return {
-        ...state,
-        favoriteList: [...state.favoriteList, action.item],
-      };
-
+      return action.isFave
+        ? {
+            ...state,
+            favoriteList: [...state.favoriteList, action.item],
+          }
+        : {
+            ...state,
+            favoriteList: [...state.favoriteList],
+          };
     case types.REMOVE:
       return {
         ...state,
