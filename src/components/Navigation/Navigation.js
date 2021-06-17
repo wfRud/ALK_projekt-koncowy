@@ -11,31 +11,31 @@ const Navigation = () => (
     <ul className={styles.nav_items}>
       <NavLink
         to="/regular"
-        className={styles.nav_item}
+        className={`${styles.nav_item} meme_button`}
         activeClassName={styles.active}
       >
         Regular
       </NavLink>
       <NavLink
         to="/hot"
-        className={styles.nav_item}
+        className={`${styles.nav_item} meme_button`}
         activeClassName={styles.active}
       >
         Hot
       </NavLink>
       <NavLink
         to="/favorite"
-        className={styles.nav_item}
+        className={`${styles.nav_item} meme_button`}
         activeClassName={styles.active}
       >
         Favorite
       </NavLink>
       <NavLink
         to="/add"
-        className={styles.nav_item}
+        className={`${styles.nav_item} meme_button`}
         activeClassName={styles.active}
       >
-        Add
+        New
       </NavLink>
     </ul>
   </nav>

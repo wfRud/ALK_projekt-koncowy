@@ -1,5 +1,6 @@
 @import "varriable";
-// Reset Css
+
+// ===Reset Css===
 html,
 body,
 div,
@@ -126,6 +127,26 @@ q {
   box-sizing: border-box;
 }
 
+// ===Global Styles===
+
 body {
   font-family: $meme_font-family;
+}
+
+.meme_button {
+  font-size: $meme_size-M;
+  text-align: center;
+  line-height: 56px;
+  width: 200px;
+  height: 56px;
+  border: 1px solid $meme_black;
+  background-color: $meme_white;
+  color: $meme_black;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $meme_blue;
+    color: $meme_white;
+  }
 }
