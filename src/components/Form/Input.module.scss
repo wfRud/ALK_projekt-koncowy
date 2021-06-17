@@ -1,0 +1,66 @@
+@import "../../assets/style/varriable";
+
+.container {
+  border: none;
+  width: 100%;
+  position: relative;
+
+  & .formInput {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 13px 0 10px 12px;
+    font-size: $meme_size-s;
+    border: 1px solid $meme_black;
+    outline: none;
+    appearance: none;
+    transition: box-shadow 0.3s;
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.15);
+      outline: 0;
+      transition: border 0.3s 0.3s;
+    }
+
+    &:valid {
+      & + .formInputLabel {
+        &:before {
+          content: attr(data-title);
+          transform: translate3d(-5px, -20px, 0);
+          font-size: 12px;
+        }
+      }
+    }
+
+    &_error {
+      border-color: red;
+    }
+  }
+
+  & .formInputLabel {
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    width: 100%;
+    background-color: transparent;
+
+    &:before {
+      content: attr(title);
+      font-size: calc(#{$meme_size-s} + 2px);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $meme_white;
+      transition: transform 0.5s;
+      display: block;
+    }
+  }
+
+  & .error_message {
+    font-size: $meme_size-xs;
+    font-weight: $meme_font-weight_bold;
+    color: $meme_red;
+  }
+}
