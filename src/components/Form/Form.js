@@ -19,9 +19,31 @@ const Form = () => {
   const [errors, setErrors] = useState({});
 
   const handleInput = (e) => {
-    e.target.type === "file"
-      ? setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0] })
-      : setNewMeme({ ...newMeme, [e.target.name]: e.target.value });
+    if (e.target.type === "file") {
+      handleInputFileValidation(e);
+    } else {
+      setNewMeme({ ...newMeme, [e.target.name]: e.target.value });
+    }
+  };
+
+  const handleInputFileValidation = (e) => {
+    let newErrors = {};
+    const allowedExtension = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+    if (!allowedExtension.test(e.target.value)) {
+      e.target.value = "";
+
+      // after cancel file, clear newMeme img property to show empty string during  AddBtn Validation
+      newMeme.img = "";
+
+      newErrors.img_error = "Invalid file type";
+      setErrors(newErrors);
+      return newErrors;
+    } else {
+      setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0] });
+      // after validate type of file clear img_error in state to turn off error
+      setErrors({ ...errors, img_error: "" });
+    }
   };
 
   const handleValidation = () => {
@@ -50,7 +72,7 @@ const Form = () => {
   const handleAddButton = (e) => {
     e.preventDefault();
     handleValidation();
-
+    console.log(newMeme.img);
     !(Object.keys(handleValidation()).length >= 1) &&
       dispatch(listActions.add(newMeme));
   };
