@@ -17,6 +17,51 @@
     appearance: none;
     transition: box-shadow 0.3s;
 
+    &_file {
+      visibility: hidden;
+      width: 60%;
+
+      &:valid {
+        & + .formInputLabel {
+          border: 1px solid $meme_black;
+
+          &:before {
+            width: 110px;
+            top: 50%;
+            left: 100%;
+            margin-left: 20px;
+            transform: translateY(-50%) !important;
+            color: $meme_green;
+            font-weight: $meme_font-weight_bold;
+          }
+        }
+      }
+
+      & + .formInputLabel {
+        top: 0;
+        left: 0;
+        border: 1px dashed $meme_black;
+        width: auto;
+        height: 40px;
+        padding: 12px 20px;
+        transition: box-shadow 0.3s;
+        border-radius: 5px;
+
+        &:before {
+          content: none;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(255, 255, 255, 0.7);
+          box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+
+    &_error {
+      border-color: red;
+    }
+
     &:focus {
       background-color: rgba(255, 255, 255, 0.7);
       box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.15);
@@ -32,10 +77,6 @@
           font-size: 12px;
         }
       }
-    }
-
-    &_error {
-      border-color: red;
     }
   }
 

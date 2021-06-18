@@ -7,7 +7,6 @@ import * as listActions from "../../store/list/actions";
 const Form = () => {
   const mainList = useSelector((state) => state.mainList);
   const dispatch = useDispatch();
-
   const [newMeme, setNewMeme] = useState({
     id: mainList.length,
     upvote: 0,
@@ -15,12 +14,15 @@ const Form = () => {
     favorite: false,
     title: "",
     img: "",
+    source: "web",
   });
-
   const [errors, setErrors] = useState({});
 
-  const handleInput = (e) =>
-    setNewMeme({ ...newMeme, [e.target.name]: e.target.value });
+  const handleInput = (e) => {
+    e.target.type === "file"
+      ? setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0] })
+      : setNewMeme({ ...newMeme, [e.target.name]: e.target.value });
+  };
 
   const handleValidation = () => {
     let newErrors = {};
@@ -35,6 +37,9 @@ const Form = () => {
 
     if (newMeme.img === "") {
       newErrors.img_error = "Image Path can not to be empty";
+    }
+    if (newMeme.source === "local" && newMeme.img === "") {
+      newErrors.img_error = "Please select file to upload";
     }
 
     setErrors(newErrors);
@@ -52,7 +57,32 @@ const Form = () => {
 
   return (
     <form action="" className={styles.form} id="newMemeForm">
+      <div className={styles.radioInput_container}>
+        <label htmlFor="web">
+          <input
+            type="radio"
+            id="web"
+            value="web"
+            name="source"
+            onChange={handleInput}
+            defaultChecked
+          />
+          Web
+        </label>
+        <label htmlFor="local">
+          <input
+            type="radio"
+            id="local"
+            value="local"
+            name="source"
+            onChange={handleInput}
+          />
+          Local
+        </label>
+      </div>
+
       <Input
+        type={"text"}
         dataTitle={"Put meme title"}
         title={"title"}
         name={"title"}
@@ -61,14 +91,28 @@ const Form = () => {
         error={errors.title_error && errors.title_error}
       />
 
-      <Input
-        dataTitle={"Put meme src"}
-        title={"source"}
-        name={"img"}
-        handleInput={handleInput}
-        value={newMeme.img}
-        error={errors.img_error && errors.img_error}
-      />
+      {newMeme.source === "web" ? (
+        <Input
+          type={"text"}
+          dataTitle={"Put meme src"}
+          title={"source"}
+          name={"img"}
+          handleInput={handleInput}
+          value={newMeme.img}
+          error={errors.img_error && errors.img_error}
+        />
+      ) : (
+        <Input
+          type={"file"}
+          dataTitle={"You've added File"}
+          title={"source"}
+          name={"img"}
+          handleInput={handleInput}
+          value={newMeme.img}
+          error={errors.img_error && errors.img_error}
+        />
+      )}
+
       <button className="meme_button" onClick={handleAddButton}>
         Add
       </button>

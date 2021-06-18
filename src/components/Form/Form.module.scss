@@ -1,9 +1,28 @@
+@import "../../assets/style/varriable";
 form {
   justify-self: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 40%;
-  height: 40%;
+  height: 60%;
   margin: 0 auto auto auto;
+
+  .radioInput_container {
+    label {
+      &:nth-child(2) {
+        margin-left: 30px;
+      }
+      input {
+        transition: transform 0.3s ease-in-out;
+      }
+      &:hover {
+        cursor: pointer;
+
+        input {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
 }
