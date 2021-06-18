@@ -1,3 +1,4 @@
+const ADD = "ADD";
 const VOTE = "VOTE";
 const SET_FAVE = "SET_FAVE";
 const INSERT = "INSERT";
@@ -6,6 +7,7 @@ const REMOVE = "REMOVE";
 const CLEAR = "CLEAR";
 
 export default {
+  ADD,
   VOTE,
   INSERT,
   SET_FAVE,

@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import styles from "./Form.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import * as listActions from "../../store/list/actions";
 
 const Form = () => {
+  const mainList = useSelector((state) => state.mainList);
+  const dispatch = useDispatch();
+
   const [newMeme, setNewMeme] = useState({
-    id: null,
+    id: mainList.length,
     upvote: 0,
     downvote: 0,
     favorite: false,
     title: "",
     img: "",
   });
+
   const [errors, setErrors] = useState({});
 
   const handleInput = (e) =>
@@ -22,19 +28,26 @@ const Form = () => {
     if (newMeme.title === "") {
       newErrors.title_error = "Put title to add new Meme";
     }
+
     if (newMeme.title.length > 0 && newMeme.title.length <= 3) {
       newErrors.title_error = "Title has to be at least 4 characters";
     }
+
     if (newMeme.img === "") {
       newErrors.img_error = "Image Path can not to be empty";
     }
 
     setErrors(newErrors);
+
+    return newErrors;
   };
 
   const handleAddButton = (e) => {
     e.preventDefault();
     handleValidation();
+
+    !(Object.keys(handleValidation()).length >= 1) &&
+      dispatch(listActions.add(newMeme));
   };
 
   return (

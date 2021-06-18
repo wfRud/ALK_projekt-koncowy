@@ -1,5 +1,10 @@
 import types from "./types";
 
+export const add = (item) => ({
+  type: types.ADD,
+  item,
+});
+
 export const upvote = (currentId, name) => ({
   type: types.VOTE,
   currentId,

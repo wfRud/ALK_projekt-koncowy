@@ -36,6 +36,12 @@ const initialMemes = {
 
 const listReducer = (state = initialMemes, action) => {
   switch (action.type) {
+    case types.ADD:
+      return {
+        ...state,
+        mainList: [...state.mainList, action.item],
+      };
+
     case types.VOTE:
       return {
         ...state,
@@ -97,6 +103,7 @@ const listReducer = (state = initialMemes, action) => {
         ...state,
         list: [...state.list.filter((item) => item.id !== action.currentId)],
       };
+
     case types.CLEAR:
       return {
         ...state,
