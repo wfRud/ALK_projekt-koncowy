@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Input from "./Input";
 import styles from "./Form.module.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,6 +8,7 @@ import * as listActions from "../../store/list/actions";
 const Form = () => {
   const mainList = useSelector((state) => state.mainList);
   const dispatch = useDispatch();
+
   const [newMeme, setNewMeme] = useState({
     id: mainList.length,
     upvote: 0,
@@ -17,6 +19,7 @@ const Form = () => {
     source: "web",
   });
   const [errors, setErrors] = useState({});
+  const [uploadFile, setUploadFile] = useState({});
 
   const handleInput = (e) => {
     if (e.target.type === "file") {
@@ -40,8 +43,10 @@ const Form = () => {
       setErrors(newErrors);
       return newErrors;
     } else {
-      setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0] });
+      setUploadFile(e.target.files[0]);
+      setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0].name });
       // after validate type of file clear img_error in state to turn off error
+
       setErrors({ ...errors, img_error: "" });
     }
   };
@@ -60,6 +65,7 @@ const Form = () => {
     if (newMeme.img === "") {
       newErrors.img_error = "Image Path can not to be empty";
     }
+
     if (newMeme.source === "local" && newMeme.img === "") {
       newErrors.img_error = "Please select file to upload";
     }
@@ -69,16 +75,38 @@ const Form = () => {
     return newErrors;
   };
 
+  const handleUploadFile = () => {
+    const formData = new FormData();
+    formData.append("memeImg", uploadFile, uploadFile.name);
+
+    axios
+      .post("http://localhost:8000/upload", formData)
+      .then(async (res) => {
+        console.log(res.statusText);
+      })
+      .catch((err) => console.log(err));
+  };
   const handleAddButton = (e) => {
     e.preventDefault();
     handleValidation();
-    console.log(newMeme.img);
-    !(Object.keys(handleValidation()).length >= 1) &&
-      dispatch(listActions.add(newMeme));
+
+    if (!(Object.keys(handleValidation()).length >= 1)) {
+      if (newMeme.source === "local") {
+        handleUploadFile();
+        dispatch(listActions.add(newMeme));
+      } else {
+        dispatch(listActions.add(newMeme));
+      }
+    }
   };
 
   return (
-    <form action="" className={styles.form} id="newMemeForm">
+    <form
+      action="http://localhost:8000/upload"
+      method="post"
+      className={styles.form}
+      id="newMemeForm"
+    >
       <div className={styles.radioInput_container}>
         <label htmlFor="web">
           <input
