@@ -11,6 +11,7 @@ const Mem = ({
   downvote,
   favorite,
   img,
+  source,
   handleVote,
   handleSetFave,
 }) => (
@@ -27,7 +28,13 @@ const Mem = ({
       </div>
     </div>
     <div className={styles.imageCnt}>
-      <img src={img} alt="meme pic" className={styles.image} />
+      <img
+        src={
+          source === "local" ? process.env.PUBLIC_URL + `/uploads/${img}` : img
+        }
+        alt="meme pic"
+        className={styles.image}
+      />
     </div>
     <div className={styles.Icons_cnt}>
       <div className={styles.Icon_box}>
