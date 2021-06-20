@@ -21,7 +21,7 @@ function Root() {
     const currentId = Number(e.nativeEvent.path[3].id);
     const name = e.currentTarget.dataset.name;
 
-    dispatch(listActions.upvote(currentId, name));
+    dispatch(listActions.vote(currentId, name));
   };
 
   const handleSetFave = (e) => {

@@ -5,7 +5,7 @@ export const add = (item) => ({
   item,
 });
 
-export const upvote = (currentId, name) => ({
+export const vote = (currentId, name) => ({
   type: types.VOTE,
   currentId,
   name,
