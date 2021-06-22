@@ -6,4 +6,15 @@
   .heading {
     margin: 20px 0 20px 15px;
   }
+  .memesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 35px 0;
+
+    .arrayEmptyGif {
+      margin: auto;
+    }
+  }
 }

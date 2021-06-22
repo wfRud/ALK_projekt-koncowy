@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./MemesView.module.scss";
 import Mem from "../../components/Mem/Mem";
+import travoltaGif from "../../assets/images/travolta_confused.gif";
 
 const MemesView = ({ list, pathName, handleVote, handleSetFave }) => (
   <div className={styles.container}>
@@ -35,7 +36,7 @@ const MemesView = ({ list, pathName, handleVote, handleSetFave }) => (
           );
         })
       ) : (
-        <h2>There's no memes to display</h2>
+        <img src={travoltaGif} alt="travolta gif" />
       )}
     </div>
   </div>
