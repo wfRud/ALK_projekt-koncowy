@@ -78,7 +78,6 @@ function Root() {
           path="/regular"
           component={() => (
             <MemesView
-              pathName={"Regular View"}
               list={regularList}
               handleVote={handleVote}
               handleSetFave={handleSetFave}
@@ -89,7 +88,6 @@ function Root() {
           path="/hot"
           component={() => (
             <MemesView
-              pathName={"Hot View"}
               list={hotList}
               handleVote={handleVote}
               handleSetFave={handleSetFave}
@@ -100,7 +98,6 @@ function Root() {
           path="/favorite"
           component={() => (
             <MemesView
-              pathName={"Favorite View"}
               list={favoriteList}
               handleVote={handleVote}
               handleSetFave={handleSetFave}

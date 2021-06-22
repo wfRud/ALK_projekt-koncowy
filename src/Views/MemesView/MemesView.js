@@ -3,10 +3,8 @@ import styles from "./MemesView.module.scss";
 import Mem from "../../components/Mem/Mem";
 import travoltaGif from "../../assets/images/travolta_confused.gif";
 
-const MemesView = ({ list, pathName, handleVote, handleSetFave }) => (
+const MemesView = ({ list, handleVote, handleSetFave }) => (
   <div className={styles.container}>
-    <h2 className={styles.heading}>You're on {pathName}</h2>
-
     <div className={styles.memesContainer}>
       {list.length > 0 ? (
         list.map((listItem) => {
@@ -36,7 +34,11 @@ const MemesView = ({ list, pathName, handleVote, handleSetFave }) => (
           );
         })
       ) : (
-        <img src={travoltaGif} alt="travolta gif" />
+        <img
+          src={travoltaGif}
+          alt="travolta gif"
+          className={styles.arrayEmptyGif}
+        />
       )}
     </div>
   </div>
