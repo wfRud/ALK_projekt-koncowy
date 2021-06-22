@@ -1,5 +1,10 @@
 import types from "./types";
 
+export const setMainList = (item) => ({
+  type: types.SET_MAINLIST,
+  item,
+});
+
 export const add = (item) => ({
   type: types.ADD,
   item,

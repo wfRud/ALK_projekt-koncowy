@@ -1,33 +1,33 @@
 import types from "./types";
-import ImageData from "../../assets/images";
+// import ImageData from "../../assets/images";
 
 const initialMemes = {
   listName: "Memes lists",
   mainList: [
-    {
-      id: 0,
-      title: "mem1",
-      upvote: 9,
-      downvote: 4,
-      favorite: false,
-      img: ImageData[0],
-    },
-    {
-      id: 1,
-      title: "mem2",
-      upvote: 12,
-      downvote: 7,
-      favorite: false,
-      img: ImageData[1],
-    },
-    {
-      id: 2,
-      title: "mem3",
-      upvote: 3,
-      downvote: 8,
-      favorite: false,
-      img: ImageData[2],
-    },
+    // {
+    //   id: 0,
+    //   title: "mem1",
+    //   upvote: 9,
+    //   downvote: 4,
+    //   favorite: false,
+    //   img: ImageData[0],
+    // },
+    // {
+    //   id: 1,
+    //   title: "mem2",
+    //   upvote: 12,
+    //   downvote: 7,
+    //   favorite: false,
+    //   img: ImageData[1],
+    // },
+    // {
+    //   id: 2,
+    //   title: "mem3",
+    //   upvote: 3,
+    //   downvote: 8,
+    //   favorite: false,
+    //   img: ImageData[2],
+    // },
   ],
   regularList: [],
   hotList: [],
@@ -36,6 +36,12 @@ const initialMemes = {
 
 const listReducer = (state = initialMemes, action) => {
   switch (action.type) {
+    case types.SET_MAINLIST:
+      return {
+        ...state,
+        mainList: [...action.item],
+      };
+
     case types.ADD:
       return {
         ...state,
