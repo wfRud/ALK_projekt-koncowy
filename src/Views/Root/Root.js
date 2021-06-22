@@ -54,7 +54,19 @@ function Root() {
 
   useEffect(() => {
     setArrays(list);
+    list.length > 0 &&
+      window.localStorage.setItem("mainList", JSON.stringify(list));
   }, [list]);
+
+  useEffect(() => {
+    window.localStorage.getItem("mainList")
+      ? dispatch(
+          listActions.setMainList(
+            JSON.parse(window.localStorage.getItem("mainList"))
+          )
+        )
+      : dispatch(listActions.setMainList([]));
+  }, []);
 
   return (
     <div className={styles.App}>
