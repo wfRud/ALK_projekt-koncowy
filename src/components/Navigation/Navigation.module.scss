@@ -1,52 +1,120 @@
 @import "../../assets/style/varriable";
 
-.navigation {
-  width: 15vw;
-  height: 100vh;
-  border-right: 1px solid $meme_black;
-  position: fixed;
-  top: 0;
-  left: 0;
+.container {
+  flex: 0 0 15vw;
+  min-width: 240px;
+  position: relative;
 
-  .logo_cnt {
+  .navigation {
+    position: relative;
     width: 100%;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-right: 1px solid $meme_black;
+    background-color: #fff;
+    z-index: 9999;
+    .logo_cnt {
+      width: 100%;
+      height: 15vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .logo {
-      font-size: $meme_size-XL;
-      font-weight: $meme_font-weight_bold;
-      cursor: default;
+      .logo {
+        font-size: $meme_size-XL;
+        font-weight: $meme_font-weight_bold;
+        cursor: default;
+      }
+    }
+    .nav_items {
+      width: 100%;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      .nav_item {
+        text-decoration: none;
+        margin-bottom: 16px;
+
+        &.active {
+          background-color: $meme_blue;
+          color: $meme_white;
+        }
+
+        &:first-child {
+          margin-top: 80px;
+        }
+
+        &:nth-child(2) {
+          &:after {
+            content: "\1F525";
+            margin-left: 16px;
+          }
+        }
+      }
     }
   }
 
-  .nav_items {
-    width: 100%;
-    height: 85vh;
+  .burger_container {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    width: 100px;
+    height: 60px;
+    border: 1px solid $meme_black;
+    position: absolute;
+    top: 5%;
+    right: 0%;
+    background-color: #fff;
+    transform: translateX(calc(100% - 1px));
+    z-index: 9998;
 
-    .nav_item {
-      text-decoration: none;
-      margin-bottom: 16px;
+    .burger {
+      position: relative;
+      width: 55px;
+      height: 30px;
+      transition: transform 0.2s ease-in-out;
+      transition: 0.2s;
 
-      &.active {
-        background-color: $meme_blue;
-        color: $meme_white;
+      &__active {
+        transform: rotate(-90deg);
+
+        & .burger_line {
+          &_1 {
+            top: calc(50% - 2px);
+            transform: rotate(45deg);
+          }
+          &_2 {
+            opacity: 0;
+          }
+          &_3 {
+            bottom: calc(50% - 2px);
+            transform: rotate(-45deg);
+          }
+        }
       }
 
-      &:first-child {
-        margin-top: 80px;
+      &:hover {
+        cursor: pointer;
       }
 
-      &:nth-child(2) {
-        &:after {
-          content: "\1F525";
-          margin-left: 16px;
+      &_line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: $meme_black;
+        transition: top 0.2s 0.2s, bottom 0.2s 0.2s, opacity 0.2s 0.2s,
+          transform 0.2s 0.4s;
+
+        &_1 {
+          top: 0;
+        }
+        &_2 {
+          top: calc(50% - 2px);
+        }
+        &_3 {
+          bottom: 0;
         }
       }
     }
