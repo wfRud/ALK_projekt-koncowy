@@ -25,11 +25,13 @@ const MemesView = ({ list, handleVote, handleSetFave }) => (
         );
       })
     ) : (
-      <img
-        src={travoltaGif}
-        alt="travolta gif"
-        className={styles.arrayEmptyGif}
-      />
+      <div className={styles.gif_container}>
+        <img
+          src={travoltaGif}
+          alt="travolta gif"
+          className={styles.arrayEmptyGif}
+        />
+      </div>
     )}
   </div>
 );

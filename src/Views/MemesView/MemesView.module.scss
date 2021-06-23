@@ -9,8 +9,11 @@
 
   overflow-y: scroll;
 
-  .arrayEmptyGif {
+  .gif_container {
     margin: auto;
+    .arrayEmptyGif {
+      width: 100%;
+    }
   }
 
   @media (max-width: 869px) {
