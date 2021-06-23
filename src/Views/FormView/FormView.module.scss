@@ -2,13 +2,13 @@
 
 .container {
   width: 85vw;
-  height: 100vh;
+  height: 50vh;
   margin-left: auto;
+  align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 200px 0;
 
   .text_box {
     width: 40%;
@@ -37,5 +37,8 @@
 
   @media (max-width: 869px) {
     width: 100vw;
+  }
+  @media (max-width: 420px) {
+    height: 60vh;
   }
 }
