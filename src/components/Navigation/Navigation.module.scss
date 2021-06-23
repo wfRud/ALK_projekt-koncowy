@@ -5,13 +5,13 @@
   min-width: 240px;
   position: relative;
   transition: transform 0.3s ease-in-out;
+  z-index: 9999;
 
   .navigation {
     position: relative;
     width: 100%;
     border-right: 1px solid $meme_black;
     background-color: #fff;
-    z-index: 9999;
 
     .logo_cnt {
       width: 100%;
