@@ -4,10 +4,14 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   const [active, setActive] = useState(false);
-
   const handleBurgerAction = () => setActive(!active);
+
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        active ? styles.container__active : ""
+      }`}
+    >
       <nav className={styles.navigation}>
         <span className={styles.logo_cnt}>
           <h2 className={styles.logo}>MEME</h2>
