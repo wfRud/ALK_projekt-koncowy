@@ -7,18 +7,10 @@ const MemesView = ({ list, handleVote, handleSetFave }) => (
   <div className={styles.container}>
     {list.length > 0 ? (
       list.map((listItem) => {
-        const { id, title, upvote, downvote, favorite, img, source } = listItem;
-
         return (
           <Mem
-            id={id}
-            key={id}
-            title={title}
-            upvote={upvote}
-            downvote={downvote}
-            favorite={favorite}
-            img={img}
-            source={source}
+            key={listItem.id}
+            {...listItem}
             handleVote={handleVote}
             handleSetFave={handleSetFave}
           />
