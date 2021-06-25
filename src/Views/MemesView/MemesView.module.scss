@@ -1,3 +1,5 @@
+@import "../../assets/style/varriable";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -9,11 +11,10 @@
 
   overflow-y: scroll;
 
-  .gif_container {
+  .message {
     margin: auto;
-    .arrayEmptyGif {
-      width: 100%;
-    }
+    font-weight: $meme_font-weight_bold;
+    font-size: $meme_size-M;
   }
 
   @media (max-width: 869px) {
