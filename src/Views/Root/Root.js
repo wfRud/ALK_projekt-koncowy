@@ -72,8 +72,7 @@ function Root() {
     <div className={styles.App}>
       <Router>
         <Navigation />
-
-        <Route exact path="/" component={() => <p>Add Form</p>} />
+        <Route path="/" component={FormView} exact />
         <Route
           path="/regular"
           component={() => (
@@ -104,7 +103,6 @@ function Root() {
             />
           )}
         />
-        <Route path="/add" component={() => <FormView />} />
       </Router>
     </div>
   );

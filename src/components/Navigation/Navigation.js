@@ -39,7 +39,8 @@ const Navigation = () => {
             Favorite
           </NavLink>
           <NavLink
-            to="/add"
+            exact
+            to="/"
             className={`${styles.nav_item} meme_button`}
             activeClassName={styles.active}
           >
