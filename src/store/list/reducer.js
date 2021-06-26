@@ -4,34 +4,34 @@ import types from "./types";
 const initialMemes = {
   listName: "Memes lists",
   mainList: [
-    // {
-    //   id: 0,
-    //   title: "mem1",
-    //   upvote: 9,
-    //   downvote: 4,
-    //   favorite: false,
-    //   img: ImageData[0],
-    // },
-    // {
-    //   id: 1,
-    //   title: "mem2",
-    //   upvote: 12,
-    //   downvote: 7,
-    //   favorite: false,
-    //   img: ImageData[1],
-    // },
-    // {
-    //   id: 2,
-    //   title: "mem3",
-    //   upvote: 3,
-    //   downvote: 8,
-    //   favorite: false,
-    //   img: ImageData[2],
-    // },
+    {
+      downvote: 4,
+      favorite: false,
+      id: 0,
+      title: "Lemmy Is a God",
+      img: "mem1.jpg",
+      upvote: 9,
+      source: "local",
+    },
+    {
+      downvote: 4,
+      favorite: true,
+      id: 1,
+      title: "LinkedIn",
+      img: "mem2.jpg",
+      upvote: 9,
+      source: "local",
+    },
+    {
+      downvote: 4,
+      favorite: false,
+      id: 2,
+      title: "Archidiecezja",
+      img: "mem3.jpg",
+      upvote: 9,
+      source: "local",
+    },
   ],
-  regularList: [],
-  hotList: [],
-  favoriteList: [],
 };
 
 const listReducer = (state = initialMemes, action) => {
@@ -104,6 +104,7 @@ const listReducer = (state = initialMemes, action) => {
         ...state,
         favoriteList: [...state.favoriteList, action.item],
       };
+
     case types.REMOVE:
       return {
         ...state,
