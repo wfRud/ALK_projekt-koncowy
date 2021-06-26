@@ -89,33 +89,6 @@ const listReducer = (state = initialMemes, action) => {
           }),
         ],
       };
-    case types.INSERT:
-      return action.isHot
-        ? {
-            ...state,
-            hotList: [...state.hotList, action.item],
-          }
-        : {
-            ...state,
-            regularList: [...state.regularList, action.item],
-          };
-    case types.INSERT_FAVE:
-      return {
-        ...state,
-        favoriteList: [...state.favoriteList, action.item],
-      };
-
-    case types.REMOVE:
-      return {
-        ...state,
-        list: [...state.list.filter((item) => item.id !== action.currentId)],
-      };
-
-    case types.CLEAR:
-      return {
-        ...state,
-        [action.field]: [],
-      };
     default:
       return state;
   }
