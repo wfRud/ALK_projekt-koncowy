@@ -10,15 +10,9 @@ import * as listActions from "../../store/list/actions";
 
 function Root() {
   const mainList = useSelector((state) => state.mainList);
-  // const { mainList: list } = state;
-
   const [regularList, setRegularList] = useState([]);
   const [hotList, setHotList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
-
-  // const regularList = useSelector((state) => state.regularList);
-  // const hotList = useSelector((state) => state.hotList);
-  // const favoriteList = useSelector((state) => state.favoriteList);
 
   const dispatch = useDispatch();
 
@@ -34,18 +28,6 @@ function Root() {
     dispatch(listActions.setFave(currentId));
   };
 
-  // const clearSpecificArray = () => {
-  //   for (const key in state) {
-  //     if (
-  //       Array.isArray(state[key]) &&
-  //       key !== "mainList" &&
-  //       state[key].length > 0
-  //     ) {
-  //       dispatch(listActions.clear(key));
-  //     }
-  //   }
-  // };
-
   const setArrays = (arr) => {
     const regularArr = arr.filter((meme) => meme.upvote - meme.downvote <= 5);
     const hotArr = arr.filter((meme) => meme.upvote - meme.downvote > 5);
@@ -54,14 +36,6 @@ function Root() {
     setRegularList([...regularArr]);
     setHotList([...hotArr]);
     setFavoriteList([...favoriteArr]);
-
-    // arr.forEach((meme) => {
-    //   meme.upvote - meme.downvote > 5
-    //     ? dispatch(listActions.insert(true, meme))
-    //     : dispatch(listActions.insert(false, meme));
-
-    //   return meme.favorite ? dispatch(listActions.insertFave(meme)) : null;
-    // });
   };
 
   useEffect(() => {
