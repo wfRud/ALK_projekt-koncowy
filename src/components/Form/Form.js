@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Input from "./Input";
 import styles from "./Form.module.scss";
@@ -20,6 +20,8 @@ const Form = () => {
   });
   const [errors, setErrors] = useState({});
   const [uploadFile, setUploadFile] = useState({});
+  const [serverConnect, setServerConnect] = useState(false);
+  const [added, setAdded] = useState(false);
 
   const handleInput = (e) => {
     if (e.target.type === "file") {
@@ -81,7 +83,7 @@ const Form = () => {
 
     axios
       .post("http://localhost:8000/upload", formData)
-      .then(async (res) => {
+      .then((res) => {
         console.log(res.statusText);
       })
       .catch((err) => console.log(err));
@@ -94,11 +96,33 @@ const Form = () => {
       if (newMeme.source === "local") {
         handleUploadFile();
         dispatch(listActions.add(newMeme));
+        setAdded(true);
+        switchAdded();
       } else {
         dispatch(listActions.add(newMeme));
+        setAdded(true);
+        switchAdded();
       }
     }
   };
+
+  const switchAdded = async () => {
+    await new Promise((r) => setTimeout(r, 2000));
+
+    // Toggle loading state
+    setAdded((added) => !added);
+  };
+
+  useEffect(async () => {
+    await axios
+      .get("http://localhost:8000")
+      .then((res) => {
+        if (res.status === 200) {
+          return setServerConnect(true);
+        }
+      })
+      .catch((err) => new Error(err));
+  }, []);
 
   return (
     <form
@@ -125,9 +149,15 @@ const Form = () => {
             id="local"
             value="local"
             name="source"
+            disabled={!serverConnect ? true : false}
             onChange={handleInput}
           />
           Local
+          {!serverConnect && (
+            <span className={`${styles.message} ${styles.message__error}`}>
+              server is disconnect
+            </span>
+          )}
         </label>
       </div>
 
@@ -166,6 +196,11 @@ const Form = () => {
       <button className="meme_button" onClick={handleAddButton}>
         Add
       </button>
+      {added && (
+        <p className={`${styles.message} ${styles.message__success}`}>
+          Meme has been added
+        </p>
+      )}
     </form>
   );
 };

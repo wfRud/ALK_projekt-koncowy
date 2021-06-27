@@ -32,7 +32,7 @@ function Root() {
       Component: MemesView,
       list: favoriteList,
     },
-    { path: "/", name: "Add", Component: FormView },
+    { path: "/", name: "Add new", Component: FormView },
   ];
 
   const dispatch = useDispatch();
@@ -47,6 +47,13 @@ function Root() {
   const handleSetFave = (e) => {
     const currentId = Number(e.nativeEvent.path[3].id);
     dispatch(listActions.setFave(currentId));
+  };
+
+  const loadData = async () => {
+    await new Promise((r) => setTimeout(r, 2000));
+
+    // Toggle loading state
+    setLoading((loading) => !loading);
   };
 
   const setArrays = (arr) => {
@@ -65,13 +72,6 @@ function Root() {
           JSON.parse(window.localStorage.getItem("mainList"))
         )
       );
-
-    const loadData = async () => {
-      await new Promise((r) => setTimeout(r, 2000));
-
-      // Toggle loading state
-      setLoading((loading) => !loading);
-    };
 
     loadData();
   }, []);

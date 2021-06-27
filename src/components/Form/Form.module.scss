@@ -13,6 +13,7 @@ form {
       &:nth-child(2) {
         margin-left: 30px;
       }
+
       input {
         transition: transform 0.3s ease-in-out;
       }
@@ -33,5 +34,18 @@ form {
   }
   @media (max-width: 360px) {
     width: 80%;
+  }
+
+  .message {
+    font-weight: $meme_font-weight_bold;
+    &__error {
+      color: $meme_red;
+      margin-left: 16px;
+    }
+
+    &__success {
+      color: $meme_green;
+      font-size: $meme_size-s;
+    }
   }
 }
