@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./MemesView.module.scss";
 import Mem from "../../components/Mem/Mem";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import Fade from "react-reveal/Fade";
 
 const MemesView = ({ list, handleVote, handleSetFave }) =>
   list.length > 0 ? (
