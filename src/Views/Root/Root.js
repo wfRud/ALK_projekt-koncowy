@@ -6,7 +6,6 @@ import Preloader from "../../components/Preloader/Preloader";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
 import FormView from "../FormView/FormView";
-import Fade from "react-reveal/Fade";
 
 import * as listActions from "../../store/list/actions";
 
@@ -41,7 +40,6 @@ function Root() {
     setHotList([...hotArr]);
     setFavoriteList([...favoriteArr]);
   };
-
   useEffect(() => {
     window.localStorage.getItem("mainList") &&
       dispatch(
