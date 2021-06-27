@@ -2,17 +2,21 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./Root.module.scss";
+import Preloader from "../../components/Preloader/Preloader";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
 import FormView from "../FormView/FormView";
+import Fade from "react-reveal/Fade";
 
 import * as listActions from "../../store/list/actions";
 
 function Root() {
   const mainList = useSelector((state) => state.mainList);
+
   const [regularList, setRegularList] = useState([]);
   const [hotList, setHotList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -45,6 +49,15 @@ function Root() {
           JSON.parse(window.localStorage.getItem("mainList"))
         )
       );
+
+    const loadData = async () => {
+      await new Promise((r) => setTimeout(r, 2000));
+
+      // Toggle loading state
+      setLoading((loading) => !loading);
+    };
+
+    loadData();
   }, []);
 
   useEffect(() => {
@@ -55,6 +68,7 @@ function Root() {
 
   return (
     <div className={styles.App}>
+      {loading && <Preloader />}
       <Router>
         <Navigation />
         <Route path="/" component={FormView} exact />

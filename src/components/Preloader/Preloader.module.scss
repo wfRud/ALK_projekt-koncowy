@@ -1,0 +1,67 @@
+@import "../../assets/style/varriable";
+@keyframes letterGoesDown {
+  0% {
+    transform: translateY(-75px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes letterGoesUp {
+  0% {
+    transform: translateY(75px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.preloader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: $meme_white;
+  z-index: 99999;
+  animation: fadeOut 0.6s 1.4s ease-in-out forwards;
+
+  .container {
+    width: 300px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      display: inline-block;
+      font-size: $meme_size-XXXXL;
+      font-weight: $meme_font-weight_bold;
+
+      &.up {
+        transform: translateY(-75px);
+        animation: letterGoesDown 1s ease-in-out forwards;
+        &:nth-child(1) {
+          animation: letterGoesDown 1s 0.3s ease-in-out forwards;
+        }
+      }
+      &.down {
+        transform: translateY(75px);
+        animation: letterGoesUp 1s ease-in-out forwards;
+      }
+      &:nth-child(2) {
+        animation: letterGoesUp 1s 0.4s ease-in-out forwards;
+      }
+    }
+  }
+}
