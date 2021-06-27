@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# MEME
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Projekt końcowy Akademia Leona Koźmiśkiego
 
-## Available Scripts
+### Kierunek: "Frotend Development z React"
 
-In the project directory, you can run:
+### Użyte technologie
 
-### `yarn start`
+<img src="screens/technologies-meme.png" width="600" />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Opis:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Aplikacja webowa "Meme", która umożliwia dodawanie memów w formacie "jpg", "jpeg", ocenianie ich, oraz gromadzenie ich w swojej kolekcji "ulubione".
 
-### `yarn test`
+## Funkcjonalność:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Dodawanie memów w postaci linku lub pliku w formacie "jpg", "jpeg" z lokalnej przestrzeni dyskowej,
+- Ocenianie poszczególnych memów,
+- Oznaczanie Memów jako ulubione,
+- Filtrowanie memów na 3 różne przestrzenie: "Regular", "Hot", "Favorite",
+- Formularz z przyjaznym Interface,
 
-### `yarn build`
+## Instalacja
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+MEME wymaga zainstalowanego Node.js v10+
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Zainstaluj projekt lokalnie na swoim kompuetrze i uruchom serwer.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[wejdź na stronę projektu](https://github.com/wfRud/Memory-react-game) Pobierz Zip projektu.
+Lub
+Utwórz lokalnie na swoim komputerze folder w którym chcesz przechowywać projekt i uruchom komendę:
 
-### `yarn eject`
+```sh
+git clone https://github.com/wfRud/ALK_projekt-koncowy.git
+cd ALK_projekt-koncowy
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Następnie aby uruchomić projekt lokalnie w swojej przeglądarce wpisz komendę:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+npm run start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Jeżeli chcesz mieć możliwość dodawanie lokalnych plików, pamiętaj by uruchomić dodatkowo lokalny serwer obsługujący przesyłanie plików do folderu projektu. W tym celu uruchom dodatkowo okno w swoim terminalu, przejdź do folderu projektu i podaj komendę:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+npm run server
+```
