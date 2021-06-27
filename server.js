@@ -17,6 +17,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
+app.get("/", (req, res) => {
+  res.send("ok");
+});
+
 app.post("/upload", upload.single("memeImg"), (req, res, error) => {
   try {
     res.send(req.file);
@@ -25,6 +29,7 @@ app.post("/upload", upload.single("memeImg"), (req, res, error) => {
     res.send(400);
   }
 });
+
 app.listen(8000, function() {
   console.log("App running on port 8000");
 });
