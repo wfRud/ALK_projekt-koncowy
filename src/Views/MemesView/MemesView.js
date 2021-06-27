@@ -1,26 +1,26 @@
 import React from "react";
 import styles from "./MemesView.module.scss";
 import Mem from "../../components/Mem/Mem";
-import { TransitionGroup } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Fade from "react-reveal/Fade";
 
 const MemesView = ({ list, handleVote, handleSetFave }) =>
   list.length > 0 ? (
     <TransitionGroup className={styles.container}>
       {list.map((listItem) => (
-        <Fade
+        <CSSTransition
           enter={false}
           key={listItem.id}
-          duration={600}
-          right
-          unmountOnExit
+          timeout={600}
+          classNames="item"
+          enter={false}
         >
           <Mem
             {...listItem}
             handleVote={handleVote}
             handleSetFave={handleSetFave}
           />
-        </Fade>
+        </CSSTransition>
       ))}
     </TransitionGroup>
   ) : (
