@@ -4,6 +4,10 @@
 
 ### Kierunek: "Frotend Development z React"
 
+### App Demo:
+
+[demo aplikacji](https://alk-projekt-koncowy.vercel.app/)
+
 ### Użyte technologie
 
 <img src="screens/technologies-meme.png" width="600" />
