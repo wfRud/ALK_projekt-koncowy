@@ -1,5 +1,4 @@
 import types from "./types";
-// import ImageData from "../../assets/images";
 
 const initialMemes = {
   listName: "Memes lists",
