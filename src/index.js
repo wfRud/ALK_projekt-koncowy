@@ -8,11 +8,9 @@ import store from "./store/store";
 import Root from "./Views/Root/Root";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Root />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Root />
+  </Provider>,
   document.getElementById("root")
 );
 
