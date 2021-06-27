@@ -8,7 +8,6 @@ const MemesView = ({ list, handleVote, handleSetFave }) =>
     <TransitionGroup className={styles.container}>
       {list.map((listItem) => (
         <CSSTransition
-          enter={false}
           key={listItem.id}
           timeout={600}
           classNames="item"
