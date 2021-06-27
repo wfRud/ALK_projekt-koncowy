@@ -19,9 +19,19 @@ function Root() {
   const [loading, setLoading] = useState(true);
 
   const routes = [
-    { path: "/regular", name: "Regular", Component: MemesView },
-    { path: "/hot", name: "Hot", Component: MemesView },
-    { path: "/favorite", name: "Favorite", Component: MemesView },
+    {
+      path: "/regular",
+      name: "Regular",
+      Component: MemesView,
+      list: regularList,
+    },
+    { path: "/hot", name: "Hot", Component: MemesView, list: hotList },
+    {
+      path: "/favorite",
+      name: "Favorite",
+      Component: MemesView,
+      list: favoriteList,
+    },
     { path: "/", name: "Add", Component: FormView },
   ];
 
@@ -77,29 +87,24 @@ function Root() {
       {loading && <Preloader />}
       <Router>
         <Navigation routes={routes} />
-        <Route path="/" component={FormView} exact />
-        <Route path="/regular">
-          <MemesView
-            list={regularList}
-            handleVote={handleVote}
-            handleSetFave={handleSetFave}
-          />
-        </Route>
-
-        <Route path="/hot">
-          <MemesView
-            list={hotList}
-            handleVote={handleVote}
-            handleSetFave={handleSetFave}
-          />
-        </Route>
-        <Route path="/favorite">
-          <MemesView
-            list={favoriteList}
-            handleVote={handleVote}
-            handleSetFave={handleSetFave}
-          />
-        </Route>
+        {routes.map(({ path, Component, list }) => (
+          <Route key={path} path={path} exact>
+            {({ match }) => (
+              <CSSTransition
+                in={match != null}
+                timeout={300}
+                classNames="page"
+                unmountOnExit
+              >
+                <Component
+                  list={list}
+                  handleVote={handleVote}
+                  handleSetFave={handleSetFave}
+                />
+              </CSSTransition>
+            )}
+          </Route>
+        ))}
       </Router>
     </div>
   );

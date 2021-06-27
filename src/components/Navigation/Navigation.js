@@ -20,6 +20,7 @@ const Navigation = ({ routes }) => {
           {routes.map((route) => (
             <NavLink
               to={route.path}
+              key={route.path}
               className={`${styles.nav_item} meme_button`}
               activeClassName={styles.active}
               exact

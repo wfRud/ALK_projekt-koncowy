@@ -7,8 +7,13 @@
   width: 85vw;
   height: 100vh;
   padding: 35px 0;
-
+  position: absolute;
+  top: 0;
+  right: 0;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .message {
     margin: auto;
