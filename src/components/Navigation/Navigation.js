@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Navigation.module.scss";
 import { NavLink } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ routes }) => {
   const [active, setActive] = useState(false);
   const handleBurgerAction = () => setActive(!active);
 
@@ -17,35 +17,16 @@ const Navigation = () => {
           <h2 className={styles.logo}>MEME</h2>
         </span>
         <ul className={styles.nav_items}>
-          <NavLink
-            to="/regular"
-            className={`${styles.nav_item} meme_button`}
-            activeClassName={styles.active}
-          >
-            Regular
-          </NavLink>
-          <NavLink
-            to="/hot"
-            className={`${styles.nav_item} meme_button`}
-            activeClassName={styles.active}
-          >
-            Hot
-          </NavLink>
-          <NavLink
-            to="/favorite"
-            className={`${styles.nav_item} meme_button`}
-            activeClassName={styles.active}
-          >
-            Favorite
-          </NavLink>
-          <NavLink
-            exact
-            to="/"
-            className={`${styles.nav_item} meme_button`}
-            activeClassName={styles.active}
-          >
-            New
-          </NavLink>
+          {routes.map((route) => (
+            <NavLink
+              to={route.path}
+              className={`${styles.nav_item} meme_button`}
+              activeClassName={styles.active}
+              exact
+            >
+              {route.name}
+            </NavLink>
+          ))}
         </ul>
       </nav>
 

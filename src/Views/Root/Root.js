@@ -6,6 +6,7 @@ import Preloader from "../../components/Preloader/Preloader";
 import Navigation from "../../components/Navigation/Navigation";
 import MemesView from "../MemesView/MemesView";
 import FormView from "../FormView/FormView";
+import { CSSTransition } from "react-transition-group";
 
 import * as listActions from "../../store/list/actions";
 
@@ -16,6 +17,13 @@ function Root() {
   const [hotList, setHotList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const routes = [
+    { path: "/regular", name: "Regular", Component: MemesView },
+    { path: "/hot", name: "Hot", Component: MemesView },
+    { path: "/favorite", name: "Favorite", Component: MemesView },
+    { path: "/", name: "Add", Component: FormView },
+  ];
 
   const dispatch = useDispatch();
 
@@ -68,7 +76,7 @@ function Root() {
     <div className={styles.App}>
       {loading && <Preloader />}
       <Router>
-        <Navigation />
+        <Navigation routes={routes} />
         <Route path="/" component={FormView} exact />
         <Route path="/regular">
           <MemesView
