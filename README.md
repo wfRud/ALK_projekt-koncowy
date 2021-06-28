@@ -22,7 +22,8 @@ Aplikacja webowa "Meme", która umożliwia dodawanie memów w formacie "jpg", "j
 - Ocenianie poszczególnych memów,
 - Oznaczanie Memów jako ulubione,
 - Filtrowanie memów na 3 różne przestrzenie: "Regular", "Hot", "Favorite",
-- Formularz z przyjaznym Interface,
+- Formularz dodawania mema z przyjaznym Interface,
+- RWD
 
 ## Instalacja
 
