@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 import * as listActions from "../../store/list/actions";
 
 function Root() {
-  const mainList = useSelector((state) => state.mainList);
+  const allMemeList = useSelector((state) => state.allMemeList);
 
   const [regularList, setRegularList] = useState([]);
   const [hotList, setHotList] = useState([]);
@@ -66,10 +66,10 @@ function Root() {
     setFavoriteList([...favoriteArr]);
   };
   useEffect(() => {
-    window.localStorage.getItem("mainList") &&
+    window.localStorage.getItem("allMemeList") &&
       dispatch(
-        listActions.setMainList(
-          JSON.parse(window.localStorage.getItem("mainList"))
+        listActions.setMemeList(
+          JSON.parse(window.localStorage.getItem("allMemeList"))
         )
       );
 
@@ -77,10 +77,10 @@ function Root() {
   }, []);
 
   useEffect(() => {
-    setArrays(mainList);
-    mainList.length > 0 &&
-      window.localStorage.setItem("mainList", JSON.stringify(mainList));
-  }, [mainList]);
+    setArrays(allMemeList);
+    allMemeList.length > 0 &&
+      window.localStorage.setItem("allMemeList", JSON.stringify(allMemeList));
+  }, [allMemeList]);
 
   return (
     <div className={styles.App}>

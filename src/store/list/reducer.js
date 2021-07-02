@@ -2,7 +2,7 @@ import types from "./types";
 
 const initialMemes = {
   listName: "Memes lists",
-  mainList: [
+  allMemeList: [
     {
       downvote: 4,
       favorite: false,
@@ -35,25 +35,25 @@ const initialMemes = {
 
 const listReducer = (state = initialMemes, action) => {
   switch (action.type) {
-    case types.SET_MAINLIST:
+    case types.SET_ALLMEMELIST:
       return {
         ...state,
-        mainList: [...action.item],
+        allMemeList: [...action.item],
       };
 
     case types.ADD:
       return {
         ...state,
-        mainList: [...state.mainList, action.item],
+        allMemeList: [...state.allMemeList, action.item],
       };
 
     case types.VOTE:
       return {
         ...state,
-        mainList: [
+        allMemeList: [
           // map array to find current element, return each one which doesn't fit by id.
 
-          ...state.mainList.map((item) => {
+          ...state.allMemeList.map((item) => {
             if (item.id !== action.currentId) {
               return item;
             }
@@ -75,8 +75,8 @@ const listReducer = (state = initialMemes, action) => {
     case types.SET_FAVE:
       return {
         ...state,
-        mainList: [
-          ...state.mainList.map((item) => {
+        allMemeList: [
+          ...state.allMemeList.map((item) => {
             if (item.id !== action.currentId) {
               return item;
             }

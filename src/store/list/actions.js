@@ -1,7 +1,7 @@
 import types from "./types";
 
-export const setMainList = (item) => ({
-  type: types.SET_MAINLIST,
+export const setMemeList = (item) => ({
+  type: types.SET_ALLMEMELIST,
   item,
 });
 

@@ -6,11 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import * as listActions from "../../store/list/actions";
 
 const Form = () => {
-  const mainList = useSelector((state) => state.mainList);
+  const allMemeList = useSelector((state) => state.allMemeList);
   const dispatch = useDispatch();
 
   const [newMeme, setNewMeme] = useState({
-    id: mainList.length,
+    id: allMemeList.length,
     upvote: 0,
     downvote: 0,
     favorite: false,
