@@ -43,7 +43,6 @@ const Form = () => {
 
       newErrors.img_error = "Invalid file type";
       setErrors(newErrors);
-      return newErrors;
     } else {
       setUploadFile(e.target.files[0]);
       setNewMeme({ ...newMeme, [e.target.name]: e.target.files[0].name });
