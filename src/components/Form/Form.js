@@ -83,9 +83,11 @@ const Form = () => {
     axios
       .post("http://localhost:8000/upload", formData)
       .then((res) => {
-        console.log(res.statusText);
+        if (res.status === 200) {
+          setAdded(true);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => new Error(err));
   };
   const handleAddButton = (e) => {
     e.preventDefault();
@@ -95,7 +97,6 @@ const Form = () => {
       if (newMeme.source === "local") {
         handleUploadFile();
         dispatch(listActions.add(newMeme));
-        setAdded(true);
         switchAdded();
       } else {
         dispatch(listActions.add(newMeme));
