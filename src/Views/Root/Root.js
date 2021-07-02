@@ -53,7 +53,7 @@ function Root() {
     setLoading((loading) => !loading);
   };
 
-  const setArrays = (arr) => {
+  const setVariousArrays = (arr) => {
     const regularArr = arr.filter((meme) => meme.upvote - meme.downvote <= 5);
     const hotArr = arr.filter((meme) => meme.upvote - meme.downvote > 5);
     const favoriteArr = arr.filter((meme) => meme.favorite);
@@ -74,7 +74,7 @@ function Root() {
   }, []);
 
   useEffect(() => {
-    setArrays(allMemeList);
+    setVariousArrays(allMemeList);
     allMemeList.length > 0 &&
       window.localStorage.setItem("allMemeList", JSON.stringify(allMemeList));
   }, [allMemeList]);
