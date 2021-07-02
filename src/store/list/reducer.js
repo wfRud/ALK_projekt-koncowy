@@ -63,11 +63,11 @@ const listReducer = (state = initialMemes, action) => {
             return action.name === "upvote"
               ? {
                   ...item,
-                  ...(item.upvote = item.upvote + 1),
+                  upvote: item.upvote + 1,
                 }
               : {
                   ...item,
-                  ...(item.downvote = item.downvote + 1),
+                  downvote: item.downvote + 1,
                 };
           }),
         ],
