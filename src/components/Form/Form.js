@@ -125,12 +125,7 @@ const Form = () => {
   }, []);
 
   return (
-    <form
-      action="http://localhost:8000/upload"
-      method="post"
-      className={styles.form}
-      id="newMemeForm"
-    >
+    <form className={styles.form} id="newMemeForm">
       <div className={styles.radioInput_container}>
         <label htmlFor="web">
           <input
