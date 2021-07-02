@@ -23,7 +23,7 @@ const Mem = ({
           className={`${styles.Icon} ${
             favorite ? styles.Icon__favorite_active : styles.Icon__favorite
           }`}
-          onClick={(e) => handleSetFave(e)}
+          onClick={() => handleSetFave(id)}
         />
       </div>
     </div>
@@ -40,7 +40,7 @@ const Mem = ({
       <div className={styles.Icon_box}>
         <UpVoteIcon
           className={`${styles.Icon} ${styles.Icon__upVote}`}
-          onClick={(e) => handleVote(e)}
+          onClick={(e) => handleVote(e, id)}
           data-name="upvote"
         />
         <span className={styles.counter}>{upvote}</span>
@@ -48,7 +48,7 @@ const Mem = ({
       <div className={styles.Icon_box}>
         <DownVoteIcon
           className={`${styles.Icon} ${styles.Icon__downVote}`}
-          onClick={(e) => handleVote(e)}
+          onClick={(e) => handleVote(e, id)}
           data-name="downvote"
         />
         <span className={styles.counter}>{downvote}</span>

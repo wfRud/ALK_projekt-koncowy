@@ -37,16 +37,13 @@ function Root() {
 
   const dispatch = useDispatch();
 
-  const handleVote = (e) => {
-    const currentId = Number(e.nativeEvent.path[3].id);
+  const handleVote = (e, id) => {
     const name = e.currentTarget.dataset.name;
-
-    dispatch(listActions.vote(currentId, name));
+    dispatch(listActions.vote(id, name));
   };
 
-  const handleSetFave = (e) => {
-    const currentId = Number(e.nativeEvent.path[3].id);
-    dispatch(listActions.setFave(currentId));
+  const handleSetFave = (id) => {
+    dispatch(listActions.setFave(id));
   };
 
   const loadData = async () => {
